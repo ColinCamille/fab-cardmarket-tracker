@@ -9,6 +9,7 @@ CARDS_FILE = BASE_DIR / "cards.json"
 CATALOG_FILE = BASE_DIR / "catalog.json"
 
 API_BASE = "https://api.goagain.dev/v1/cards"
+SETS_API = "https://api.goagain.dev/v1/sets?limit=200"
 TARGET_RARITIES = {"M", "L", "F"}
 RARITY_NAMES = {"M": "Majestic", "L": "Legendary", "F": "Fabled"}
 ALL_RARITY_NAMES = {
@@ -52,6 +53,20 @@ def best_rarity_label(card):
     return None
 
 
+def fetch_set_names():
+    with urllib.request.urlopen(SETS_API, timeout=20) as resp:
+        data = json.loads(resp.read().decode())
+    return {s["id"]: s["name"] for s in data}
+
+
+def extension_for_target_rarity(card, set_names):
+    """Extension (nom d'edition) de la premiere impression correspondant a une des rarete ciblees."""
+    for printing in card.get("printings", []):
+        if printing.get("rarity") in TARGET_RARITIES:
+            return set_names.get(printing.get("set_id"))
+    return None
+
+
 def fetch_all_cards():
     cards = []
     offset = 0
@@ -72,6 +87,10 @@ def main():
     all_cards = fetch_all_cards()
     print(f"{len(all_cards)} cartes recuperees.")
 
+    print("Recuperation des noms d'extensions...")
+    set_names = fetch_set_names()
+    print(f"{len(set_names)} extensions recuperees.")
+
     by_id = {slugify_id(c["name"]): c for c in all_cards}
 
     cards = load_json(CARDS_FILE, [])
@@ -90,6 +109,11 @@ def main():
             rarity = best_rarity_label(source)
             if rarity:
                 card["rarete"] = rarity
+                changed = True
+        if not card.get("extension"):
+            extension = extension_for_target_rarity(source, set_names)
+            if extension:
+                card["extension"] = extension
                 changed = True
         if changed:
             cards_updated += 1
@@ -115,12 +139,15 @@ def main():
         rarity_label = RARITY_NAMES[sorted(hit)[0]]
         url = f"https://www.cardmarket.com/en/FleshAndBlood/Cards/{slugify_url_name(card['name'])}"
         image = first_image(card)
+        extension = extension_for_target_rarity(card, set_names)
 
         if card_id in catalog_by_id:
             catalog_by_id[card_id]["rarete"] = rarity_label
             catalog_by_id[card_id]["url"] = url
             if image:
                 catalog_by_id[card_id]["image"] = image
+            if extension:
+                catalog_by_id[card_id]["extension"] = extension
         else:
             entry = {
                 "id": card_id,
@@ -130,6 +157,8 @@ def main():
             }
             if image:
                 entry["image"] = image
+            if extension:
+                entry["extension"] = extension
             catalog_by_id[card_id] = entry
             added += 1
 

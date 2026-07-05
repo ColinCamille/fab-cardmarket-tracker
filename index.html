@@ -390,6 +390,12 @@
       <button class="chip" data-bool="has_price">Prix connu</button>
     </div>
     <div class="sort-group">
+      <label class="filter-label" for="extensionSelect">Extension</label>
+      <select class="sort-select" id="extensionSelect">
+        <option value="">Toutes les extensions</option>
+      </select>
+    </div>
+    <div class="sort-group">
       <label class="filter-label" for="sortSelect">Trier</label>
       <select class="sort-select" id="sortSelect">
         <option value="name">Nom (A → Z)</option>
@@ -420,6 +426,7 @@ let filter = 'not_owned';
 let searchText = '';
 let rarityFilter = new Set();
 let boolFilters = new Set();
+let extensionFilter = '';
 let sortMode = 'name';
 let renderedCount = PAGE_SIZE;
 
@@ -537,8 +544,21 @@ async function loadData() {
   allCards = cards.map(c => ({ ...c, source: 'manuel' }))
     .concat(catalog.map(c => ({ ...c, source: 'catalogue' })));
 
+  populateExtensionOptions();
   setupControls();
   renderAll();
+}
+
+function populateExtensionOptions() {
+  const extensions = Array.from(new Set(allCards.map(c => c.extension).filter(Boolean)))
+    .sort((a, b) => a.localeCompare(b, 'fr'));
+  const select = document.getElementById('extensionSelect');
+  extensions.forEach(ext => {
+    const opt = document.createElement('option');
+    opt.value = ext;
+    opt.textContent = ext;
+    select.appendChild(opt);
+  });
 }
 
 function setupControls() {
@@ -572,6 +592,11 @@ function setupControls() {
   });
   document.getElementById('sortSelect').addEventListener('change', (e) => {
     sortMode = e.target.value;
+    renderedCount = PAGE_SIZE;
+    renderAll();
+  });
+  document.getElementById('extensionSelect').addEventListener('change', (e) => {
+    extensionFilter = e.target.value;
     renderedCount = PAGE_SIZE;
     renderAll();
   });
@@ -648,6 +673,7 @@ function getFilteredCards() {
     if (filter === 'not_owned' && owned) return false;
     if (searchText && !card.nom.toLowerCase().includes(searchText)) return false;
     if (rarityFilter.size && card.rarete && !rarityFilter.has(card.rarete)) return false;
+    if (extensionFilter && card.extension !== extensionFilter) return false;
     if (boolFilters.has('has_price') && !getLatest(card)) return false;
     if (boolFilters.has('watchlist') && !hasAlert(card)) return false;
     if (boolFilters.has('alert_hit') && !isAlertHit(card)) return false;
