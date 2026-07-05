@@ -11,6 +11,12 @@ CATALOG_FILE = BASE_DIR / "catalog.json"
 API_BASE = "https://api.goagain.dev/v1/cards"
 TARGET_RARITIES = {"M", "L", "F"}
 RARITY_NAMES = {"M": "Majestic", "L": "Legendary", "F": "Fabled"}
+ALL_RARITY_NAMES = {
+    "C": "Common", "R": "Rare", "S": "Super Rare", "M": "Majestic",
+    "L": "Legendary", "F": "Fabled", "T": "Token", "B": "Basic",
+    "V": "Marvel", "P": "Promo",
+}
+RARITY_ORDER = ["F", "L", "M", "V", "S", "R", "P", "C", "B", "T"]
 PAGE_SIZE = 100
 
 
@@ -35,6 +41,14 @@ def first_image(card):
     for printing in card.get("printings", []):
         if printing.get("image_url"):
             return printing["image_url"]
+    return None
+
+
+def best_rarity_label(card):
+    rarities = {p.get("rarity") for p in card.get("printings", [])}
+    for code in RARITY_ORDER:
+        if code in rarities:
+            return ALL_RARITY_NAMES.get(code, code)
     return None
 
 
@@ -64,11 +78,21 @@ def main():
     cards_updated = 0
     for card in cards:
         source = by_id.get(card["id"])
-        if source and not card.get("image"):
+        if not source:
+            continue
+        changed = False
+        if not card.get("image"):
             image = first_image(source)
             if image:
                 card["image"] = image
-                cards_updated += 1
+                changed = True
+        if not card.get("rarete"):
+            rarity = best_rarity_label(source)
+            if rarity:
+                card["rarete"] = rarity
+                changed = True
+        if changed:
+            cards_updated += 1
     if cards_updated:
         with open(CARDS_FILE, "w", encoding="utf-8") as f:
             json.dump(cards, f, ensure_ascii=False, indent=2)

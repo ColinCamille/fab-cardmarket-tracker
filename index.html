@@ -80,6 +80,52 @@
     border-color: var(--accent);
     font-weight: 600;
   }
+  .filter-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 8px;
+  }
+  .filter-label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .chip {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 20px;
+    padding: 5px 11px;
+    font-size: 0.78rem;
+  }
+  .chip.active {
+    background: var(--accent);
+    color: #0f1115;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .chip.rarity-chip.active {
+    background: var(--owned);
+    border-color: var(--owned);
+  }
+  .sort-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .sort-select {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 0.82rem;
+  }
   .card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -332,6 +378,26 @@
       <button class="filter-btn" data-filter="all">Toutes</button>
       <button class="filter-btn" data-filter="owned">Possédées</button>
     </div>
+    <div class="filter-group" id="rarityRow">
+      <span class="filter-label">Rareté</span>
+      <button class="chip rarity-chip" data-rarity="Majestic">Majestic</button>
+      <button class="chip rarity-chip" data-rarity="Legendary">Legendary</button>
+      <button class="chip rarity-chip" data-rarity="Fabled">Fabled</button>
+    </div>
+    <div class="filter-group" id="boolRow">
+      <button class="chip" data-bool="alert_hit">⚡ Alerte atteinte</button>
+      <button class="chip" data-bool="watchlist">★ Ma watchlist</button>
+      <button class="chip" data-bool="has_price">Prix connu</button>
+    </div>
+    <div class="sort-group">
+      <label class="filter-label" for="sortSelect">Trier</label>
+      <select class="sort-select" id="sortSelect">
+        <option value="name">Nom (A → Z)</option>
+        <option value="price_asc">Prix croissant</option>
+        <option value="price_desc">Prix décroissant</option>
+        <option value="drop">Plus forte baisse récente</option>
+      </select>
+    </div>
   </div>
 
   <div id="cards"></div>
@@ -352,6 +418,9 @@ let ownedSet = new Set();
 let alerts = {};
 let filter = 'not_owned';
 let searchText = '';
+let rarityFilter = new Set();
+let boolFilters = new Set();
+let sortMode = 'name';
 let renderedCount = PAGE_SIZE;
 
 function getToken() { return localStorage.getItem('gh_token') || ''; }
@@ -487,6 +556,27 @@ function setupControls() {
       renderAll();
     });
   });
+  document.querySelectorAll('.rarity-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const r = btn.dataset.rarity;
+      if (rarityFilter.has(r)) rarityFilter.delete(r); else rarityFilter.add(r);
+      renderedCount = PAGE_SIZE;
+      renderAll();
+    });
+  });
+  document.querySelectorAll('[data-bool]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const b = btn.dataset.bool;
+      if (boolFilters.has(b)) boolFilters.delete(b); else boolFilters.add(b);
+      renderedCount = PAGE_SIZE;
+      renderAll();
+    });
+  });
+  document.getElementById('sortSelect').addEventListener('change', (e) => {
+    sortMode = e.target.value;
+    renderedCount = PAGE_SIZE;
+    renderAll();
+  });
   document.getElementById('settingsBtn').addEventListener('click', promptForToken);
   document.getElementById('loadMoreBtn').addEventListener('click', () => {
     renderedCount += PAGE_SIZE;
@@ -502,6 +592,12 @@ function updateFilterButtons() {
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.filter === filter);
   });
+  document.querySelectorAll('.rarity-chip').forEach(btn => {
+    btn.classList.toggle('active', rarityFilter.has(btn.dataset.rarity));
+  });
+  document.querySelectorAll('[data-bool]').forEach(btn => {
+    btn.classList.toggle('active', boolFilters.has(btn.dataset.bool));
+  });
 }
 
 function formatDate(iso) {
@@ -515,14 +611,71 @@ function getAlertPrice(card) {
   return (v != null) ? v : (card.prix_cible != null ? card.prix_cible : null);
 }
 
+function getHistory(card) {
+  return (prices[card.id] || []).slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+}
+
+function getLatest(card) {
+  const h = getHistory(card);
+  return h.length ? h[h.length - 1] : null;
+}
+
+function hasAlert(card) {
+  return alerts[card.id] != null || card.prix_cible != null;
+}
+
+function isAlertHit(card) {
+  const latest = getLatest(card);
+  const target = getAlertPrice(card);
+  return latest && target != null && latest.prix_min <= target;
+}
+
+function getRecentDropPct(card) {
+  const h = getHistory(card);
+  if (h.length < 2) return Infinity; // pas d'info -> classées en dernier
+  const prev = h[h.length - 2].prix_min;
+  const last = h[h.length - 1].prix_min;
+  if (!prev) return Infinity;
+  return (last - prev) / prev; // négatif = baisse
+}
+
 function getFilteredCards() {
-  return allCards.filter(card => {
+  const list = allCards.filter(card => {
     const owned = ownedSet.has(card.id);
     if (filter === 'owned' && !owned) return false;
     if (filter === 'not_owned' && owned) return false;
     if (searchText && !card.nom.toLowerCase().includes(searchText)) return false;
+    if (rarityFilter.size && card.rarete && !rarityFilter.has(card.rarete)) return false;
+    if (boolFilters.has('has_price') && !getLatest(card)) return false;
+    if (boolFilters.has('watchlist') && !hasAlert(card)) return false;
+    if (boolFilters.has('alert_hit') && !isAlertHit(card)) return false;
     return true;
   });
+  return sortCards(list);
+}
+
+function sortCards(list) {
+  const sorted = list.slice();
+  if (sortMode === 'name') {
+    sorted.sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
+  } else if (sortMode === 'price_asc' || sortMode === 'price_desc') {
+    sorted.sort((a, b) => {
+      const pa = getLatest(a) ? getLatest(a).prix_min : null;
+      const pb = getLatest(b) ? getLatest(b).prix_min : null;
+      if (pa == null && pb == null) return a.nom.localeCompare(b.nom, 'fr');
+      if (pa == null) return 1;   // sans prix -> en dernier
+      if (pb == null) return -1;
+      return sortMode === 'price_asc' ? pa - pb : pb - pa;
+    });
+  } else if (sortMode === 'drop') {
+    sorted.sort((a, b) => {
+      const da = getRecentDropPct(a);
+      const db = getRecentDropPct(b);
+      if (da === db) return a.nom.localeCompare(b.nom, 'fr');
+      return da - db; // plus négatif (plus forte baisse) en premier
+    });
+  }
+  return sorted;
 }
 
 function renderAll() {
