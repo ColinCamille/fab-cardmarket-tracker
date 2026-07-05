@@ -88,6 +88,14 @@
     "extension": "Heavy Hitters"
   },
   {
+    "id": "aether-ashwing",
+    "nom": "Aether Ashwing",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Aether-Ashwing",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/media/images/DRO003.width-450.png",
+    "extension": "Uprising"
+  },
+  {
     "id": "aether-bindings-of-the-third-age",
     "nom": "Aether Bindings of the Third Age",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Aether-Bindings-of-the-Third-Age",
@@ -420,7 +428,7 @@
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Arakni-Black-Widow",
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-HNT/EN/HNT003.png",
-    "extension": "Local Game Store Promos"
+    "extension": "The Hunted"
   },
   {
     "id": "arakni-funnel-web",
@@ -428,7 +436,7 @@
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Arakni-Funnel-Web",
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-HNT/EN/HNT004.png",
-    "extension": "Local Game Store Promos"
+    "extension": "The Hunted"
   },
   {
     "id": "arakni-huntsman",
@@ -452,7 +460,7 @@
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Arakni-Orb-Weaver",
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-HNT/EN/HNT005.png",
-    "extension": "Local Game Store Promos"
+    "extension": "The Hunted"
   },
   {
     "id": "arakni-redback",
@@ -460,7 +468,7 @@
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Arakni-Redback",
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-HNT/EN/HNT006.png",
-    "extension": "Local Game Store Promos"
+    "extension": "The Hunted"
   },
   {
     "id": "arakni-solitary-confinement",
@@ -476,7 +484,7 @@
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Arakni-Tarantula",
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-HNT/EN/HNT007.png",
-    "extension": "Local Game Store Promos"
+    "extension": "The Hunted"
   },
   {
     "id": "arakni-trap-door",
@@ -484,7 +492,15 @@
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Arakni-Trap-Door",
     "rarete": "Promo",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/HNT008.webp",
-    "extension": "Local Game Store Promos"
+    "extension": "The Hunted"
+  },
+  {
+    "id": "arakni-web-of-deceit",
+    "nom": "Arakni, Web of Deceit",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Arakni-Web-of-Deceit",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-HNT/EN/HNT002.png",
+    "extension": "The Hunted"
   },
   {
     "id": "arc-light-sentinel",
@@ -647,6 +663,14 @@
     "extension": "Compendium of Rathe"
   },
   {
+    "id": "ash",
+    "nom": "Ash",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Ash",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/media/images/DRO002.width-450.png",
+    "extension": "Uprising"
+  },
+  {
     "id": "astral-bridge",
     "nom": "Astral Bridge",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Astral-Bridge",
@@ -685,6 +709,30 @@
     "rarete": "Majestic",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2024-MST/EN/MST075.png",
     "extension": "Part the Mistveil"
+  },
+  {
+    "id": "aurora",
+    "nom": "Aurora",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Aurora",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/AUA001-RF.webp",
+    "extension": "Rosetta"
+  },
+  {
+    "id": "aurora-emissary-of-lightning",
+    "nom": "Aurora, Emissary of Lightning",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Aurora-Emissary-of-Lightning",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/OMN048.webp",
+    "extension": "Omens of the Third Age"
+  },
+  {
+    "id": "aurora-legacy-of-tempest",
+    "nom": "Aurora, Legacy of Tempest",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Aurora-Legacy-of-Tempest",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/OMN047.webp",
+    "extension": "Omens of the Third Age"
   },
   {
     "id": "aurora-shooting-star",
@@ -749,6 +797,22 @@
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/media/images/1HP221.width-450.png",
     "extension": "Hero Card Promos"
+  },
+  {
+    "id": "azvolai",
+    "nom": "Azvolai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Azvolai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR009_A_Back.png",
+    "extension": "Uprising"
+  },
+  {
+    "id": "baalghor-omen-of-the-end",
+    "nom": "Baalghor, Omen of the End",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Baalghor-Omen-of-the-End",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/IAR159-MV.webp",
+    "extension": "??? Set 20 ???"
   },
   {
     "id": "backspin-thrust",
@@ -1109,6 +1173,14 @@
     "extension": "Heavy Hitters"
   },
   {
+    "id": "betsy",
+    "nom": "Betsy",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Betsy",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-HVY-BET/EN/BET001.png",
+    "extension": "Heavy Hitters"
+  },
+  {
     "id": "betsy-skin-in-the-game",
     "nom": "Betsy, Skin in the Game",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Betsy-Skin-in-the-Game",
@@ -1275,6 +1347,14 @@
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/media/images/1HP063.width-450.png",
     "extension": "Local Game Store Promos"
+  },
+  {
+    "id": "blinding-of-the-old-ones",
+    "nom": "Blinding of the Old Ones",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Blinding-of-the-Old-Ones",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/MPG026.webp",
+    "extension": "Mastery Pack Guardian"
   },
   {
     "id": "blink",
@@ -2220,6 +2300,14 @@
     "extension": "GEM Pack Promos"
   },
   {
+    "id": "cindra",
+    "nom": "Cindra",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Cindra",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/CIN001-RF.webp",
+    "extension": "The Hunted"
+  },
+  {
     "id": "cindra-dracai-of-retribution",
     "nom": "Cindra, Dracai of Retribution",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Cindra-Dracai-of-Retribution",
@@ -2716,6 +2804,22 @@
     "extension": "History Pack 1"
   },
   {
+    "id": "cromai",
+    "nom": "Cromai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Cromai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR010_A_Back.png",
+    "extension": "Uprising"
+  },
+  {
+    "id": "crouching-tiger",
+    "nom": "Crouching Tiger",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Crouching-Tiger",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-DYN/EN/DYN065.png",
+    "extension": "Dynasty"
+  },
+  {
     "id": "crows-nest",
     "nom": "Crow's Nest",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Crows-Nest",
@@ -3144,6 +3248,14 @@
     "rarete": "Majestic",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-DTD/EN/DTD171.png",
     "extension": "Dusk till Dawn"
+  },
+  {
+    "id": "disenchantment-of-the-old-ones",
+    "nom": "Disenchantment of the Old Ones",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Disenchantment-of-the-Old-Ones",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/MPG027.webp",
+    "extension": "Mastery Pack Guardian"
   },
   {
     "id": "dishonor",
@@ -3809,6 +3921,14 @@
     "extension": "GEM Pack Promos"
   },
   {
+    "id": "enigma",
+    "nom": "Enigma",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Enigma",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2024-MST-ENG/EN/ENG001.png",
+    "extension": "Part the Mistveil"
+  },
+  {
     "id": "enigma-ledger-of-ancestry",
     "nom": "Enigma, Ledger of Ancestry",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Enigma-Ledger-of-Ancestry",
@@ -3903,6 +4023,38 @@
     "rarete": "Majestic",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-EVO/EN/EVO031.png",
     "extension": "Bright Lights"
+  },
+  {
+    "id": "evo-beta-base-arms",
+    "nom": "Evo Beta Base Arms",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Evo-Beta-Base-Arms",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/PEN070.webp",
+    "extension": "Compendium of Rathe"
+  },
+  {
+    "id": "evo-beta-base-chest",
+    "nom": "Evo Beta Base Chest",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Evo-Beta-Base-Chest",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/PEN069.webp",
+    "extension": "Compendium of Rathe"
+  },
+  {
+    "id": "evo-beta-base-head",
+    "nom": "Evo Beta Base Head",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Evo-Beta-Base-Head",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/PEN068.webp",
+    "extension": "Compendium of Rathe"
+  },
+  {
+    "id": "evo-beta-base-legs",
+    "nom": "Evo Beta Base Legs",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Evo-Beta-Base-Legs",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/PEN071.webp",
+    "extension": "Compendium of Rathe"
   },
   {
     "id": "evo-circuit-breaker",
@@ -4112,6 +4264,14 @@
     "extension": "Hero Card Promos"
   },
   {
+    "id": "fang",
+    "nom": "Fang",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Fang",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/FNG001-RF.webp",
+    "extension": "The Hunted"
+  },
+  {
     "id": "fang-strike",
     "nom": "Fang Strike",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Fang-Strike",
@@ -4158,6 +4318,14 @@
     "rarete": "Promo",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/APS009.webp",
     "extension": "Promos"
+  },
+  {
+    "id": "fealty",
+    "nom": "Fealty",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Fealty",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/CIN028.webp",
+    "extension": "The Hunted"
   },
   {
     "id": "fearless-confrontation",
@@ -4478,6 +4646,14 @@
     "rarete": "Majestic",
     "image": "https://storage.googleapis.com/fabmaster/media/images/1HP099.width-450.png",
     "extension": "History Pack 1"
+  },
+  {
+    "id": "florian",
+    "nom": "Florian",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Florian",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/FLR001-RF.webp",
+    "extension": "Rosetta"
   },
   {
     "id": "florian-rotwood-harbinger",
@@ -4815,6 +4991,14 @@
     "extension": "Local Game Store Promos"
   },
   {
+    "id": "gate-to-arathael",
+    "nom": "Gate to íArathael",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Gate-to-Arathael",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/IAR222-MV.webp",
+    "extension": "??? Set 20 ???"
+  },
+  {
     "id": "gauntlet-of-sword-and-sorcery",
     "nom": "Gauntlet of Sword and Sorcery",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Gauntlet-of-Sword-and-Sorcery",
@@ -5110,6 +5294,14 @@
     "extension": "Local Game Store Promos"
   },
   {
+    "id": "golden-grail",
+    "nom": "Golden Grail",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Golden-Grail",
+    "rarete": "Marvel",
+    "image": "https://cdn.fabtcg.com/uploads/2026/04/BDO-02.webp",
+    "extension": "Mastery Pack Warrior"
+  },
+  {
     "id": "golden-heart-plate",
     "nom": "Golden Heart Plate",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Golden-Heart-Plate",
@@ -5132,6 +5324,14 @@
     "rarete": "Majestic",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/FAB343-RF.webp",
     "extension": "Promos"
+  },
+  {
+    "id": "goldfin-harpoon",
+    "nom": "Goldfin Harpoon",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Goldfin-Harpoon",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-SEA/EN/SEA093.png",
+    "extension": "High Seas"
   },
   {
     "id": "goldkiss-rum",
@@ -5278,6 +5478,14 @@
     "extension": "Armory Deck - Gravy Bones"
   },
   {
+    "id": "gravy-bones",
+    "nom": "Gravy Bones",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Gravy-Bones",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/AGB002-RF.webp",
+    "extension": "High Seas"
+  },
+  {
     "id": "gravy-bones-shipwrecked-looter",
     "nom": "Gravy Bones, Shipwrecked Looter",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Gravy-Bones-Shipwrecked-Looter",
@@ -5348,6 +5556,14 @@
     "rarete": "Majestic",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-DTD/EN/DTD229.png",
     "extension": "Dusk till Dawn"
+  },
+  {
+    "id": "hala",
+    "nom": "Hala",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Hala",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/MPW004.webp",
+    "extension": "Mastery Pack Warrior"
   },
   {
     "id": "hala-goldenhelm",
@@ -6236,6 +6452,22 @@
     "extension": "Local Game Store Promos"
   },
   {
+    "id": "invoke-azvolai",
+    "nom": "Invoke Azvolai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Azvolai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR009.png",
+    "extension": "Uprising"
+  },
+  {
+    "id": "invoke-cromai",
+    "nom": "Invoke Cromai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Cromai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR010.png",
+    "extension": "Uprising"
+  },
+  {
     "id": "invoke-dominia",
     "nom": "Invoke Dominia",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Dominia",
@@ -6252,6 +6484,38 @@
     "extension": "Uprising"
   },
   {
+    "id": "invoke-kyloria",
+    "nom": "Invoke Kyloria",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Kyloria",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR011.png",
+    "extension": "Uprising"
+  },
+  {
+    "id": "invoke-miragai",
+    "nom": "Invoke Miragai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Miragai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR012.png",
+    "extension": "Uprising"
+  },
+  {
+    "id": "invoke-nekria",
+    "nom": "Invoke Nekria",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Nekria",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR013.png",
+    "extension": "Uprising"
+  },
+  {
+    "id": "invoke-ouvia",
+    "nom": "Invoke Ouvia",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Ouvia",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR014.png",
+    "extension": "Uprising"
+  },
+  {
     "id": "invoke-suraya",
     "nom": "Invoke Suraya",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Suraya",
@@ -6260,11 +6524,35 @@
     "extension": "Dynasty"
   },
   {
+    "id": "invoke-themai",
+    "nom": "Invoke Themai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Themai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR015.png",
+    "extension": "Uprising"
+  },
+  {
     "id": "invoke-tomeltai",
     "nom": "Invoke Tomeltai",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Tomeltai",
     "rarete": "Majestic",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR007.png",
+    "extension": "Uprising"
+  },
+  {
+    "id": "invoke-vynserakai",
+    "nom": "Invoke Vynserakai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Vynserakai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR016.png",
+    "extension": "Uprising"
+  },
+  {
+    "id": "invoke-yendurai",
+    "nom": "Invoke Yendurai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Invoke-Yendurai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR017.png",
     "extension": "Uprising"
   },
   {
@@ -6492,6 +6780,14 @@
     "extension": "Hero Card Promos"
   },
   {
+    "id": "kassai",
+    "nom": "Kassai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Kassai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-HVY/EN/HVY091.png",
+    "extension": "Heavy Hitters"
+  },
+  {
     "id": "kassai-of-the-golden-sand",
     "nom": "Kassai of the Golden Sand",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Kassai-of-the-Golden-Sand",
@@ -6532,6 +6828,14 @@
     "extension": "Hero Card Promos"
   },
   {
+    "id": "kayo",
+    "nom": "Kayo",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Kayo",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-HVY/EN/HVY002.png",
+    "extension": "Heavy Hitters"
+  },
+  {
     "id": "kayo-armed-and-dangerous",
     "nom": "Kayo, Armed and Dangerous",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Kayo-Armed-and-Dangerous",
@@ -6546,6 +6850,14 @@
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/media/images/1HP003.width-450.png",
     "extension": "Hero Card Promos"
+  },
+  {
+    "id": "kayo-strong-arm",
+    "nom": "Kayo, Strong-arm",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Kayo-Strong-arm",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/SUP064.webp",
+    "extension": "Super Slam"
   },
   {
     "id": "kayo-underhanded-cheat",
@@ -6658,6 +6970,14 @@
     "rarete": "Promo",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/CIN002.webp",
     "extension": "GEM Pack Promos"
+  },
+  {
+    "id": "kyloria",
+    "nom": "Kyloria",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Kyloria",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR011_A_Back.png",
+    "extension": "Uprising"
   },
   {
     "id": "lace-with-bloodrot",
@@ -7100,6 +7420,14 @@
     "extension": "Ira Welcome Deck"
   },
   {
+    "id": "lyath-goldmane",
+    "nom": "Lyath Goldmane",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Lyath-Goldmane",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/SUP072.webp",
+    "extension": "Super Slam"
+  },
+  {
     "id": "lyath-goldmane-vile-savant",
     "nom": "Lyath Goldmane, Vile Savant",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Lyath-Goldmane-Vile-Savant",
@@ -7234,6 +7562,22 @@
     "rarete": "Promo",
     "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/AAC031.webp",
     "extension": "Promos"
+  },
+  {
+    "id": "marlynn",
+    "nom": "Marlynn",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Marlynn",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-SEA/EN/SEA083.png",
+    "extension": "High Seas"
+  },
+  {
+    "id": "marlynn-treasure-hunter",
+    "nom": "Marlynn, Treasure Hunter",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Marlynn-Treasure-Hunter",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-SEA/EN/SEA082.png",
+    "extension": "High Seas"
   },
   {
     "id": "mask-of-deceit",
@@ -7547,6 +7891,14 @@
     "extension": "Local Game Store Promos"
   },
   {
+    "id": "miragai",
+    "nom": "Miragai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Miragai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR012_A_Back.png",
+    "extension": "Uprising"
+  },
+  {
     "id": "miraging-metamorph",
     "nom": "Miraging Metamorph",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Miraging-Metamorph",
@@ -7667,6 +8019,14 @@
     "extension": "Monarch"
   },
   {
+    "id": "nasreth-the-soul-harrower",
+    "nom": "Nasreth, the Soul Harrower",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Nasreth-the-Soul-Harrower",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-DTD/EN/DTD193.png",
+    "extension": "Dusk till Dawn"
+  },
+  {
     "id": "nasty-surprise",
     "nom": "Nasty Surprise",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Nasty-Surprise",
@@ -7689,6 +8049,14 @@
     "rarete": "Promo",
     "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/FAB465-MV.webp",
     "extension": "Promos"
+  },
+  {
+    "id": "nekria",
+    "nom": "Nekria",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Nekria",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR013_A_Back.png",
+    "extension": "Uprising"
   },
   {
     "id": "nerve-scalpel",
@@ -7875,6 +8243,14 @@
     "extension": "Promos"
   },
   {
+    "id": "nuu",
+    "nom": "Nuu",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Nuu",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2024-MST/EN/MST002.png",
+    "extension": "Part the Mistveil"
+  },
+  {
     "id": "nuu-alluring-desire",
     "nom": "Nuu, Alluring Desire",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Nuu-Alluring-Desire",
@@ -8002,6 +8378,14 @@
     "extension": "Armory Deck Origins - Jarl Vetreiði"
   },
   {
+    "id": "olympia",
+    "nom": "Olympia",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Olympia",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-HVY/EN/HVY093.png",
+    "extension": "Heavy Hitters"
+  },
+  {
     "id": "olympia-prized-fighter",
     "nom": "Olympia, Prized Fighter",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Olympia-Prized-Fighter",
@@ -8066,6 +8450,14 @@
     "extension": "Part the Mistveil"
   },
   {
+    "id": "oscilio",
+    "nom": "Oscilio",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Oscilio",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/OSC001-RF.webp",
+    "extension": "Rosetta"
+  },
+  {
     "id": "oscilio-constella-intelligence",
     "nom": "Oscilio, Constella Intelligence",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Oscilio-Constella-Intelligence",
@@ -8074,12 +8466,36 @@
     "extension": "Hero Card Promos"
   },
   {
+    "id": "oscilio-forked-continuum",
+    "nom": "Oscilio, Forked Continuum",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Oscilio-Forked-Continuum",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/OMN094.webp",
+    "extension": "Omens of the Third Age"
+  },
+  {
+    "id": "oscilio-scion-of-the-third-age",
+    "nom": "Oscilio, Scion of the Third Age",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Oscilio-Scion-of-the-Third-Age",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/OMN095.webp",
+    "extension": "Omens of the Third Age"
+  },
+  {
     "id": "outside-interference",
     "nom": "Outside Interference",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Outside-Interference",
     "rarete": "Majestic",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/SUP066.webp",
     "extension": "Super Slam"
+  },
+  {
+    "id": "ouvia",
+    "nom": "Ouvia",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Ouvia",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR014_A_Back.png",
+    "extension": "Uprising"
   },
   {
     "id": "over-loop",
@@ -8104,6 +8520,14 @@
     "rarete": "Promo",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/GEM094.webp",
     "extension": "GEM Pack Promos"
+  },
+  {
+    "id": "oysten-heart-of-gold",
+    "nom": "Oysten, Heart of Gold",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Oysten-Heart-of-Gold",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/AGB017.webp",
+    "extension": "High Seas"
   },
   {
     "id": "paddle-faster",
@@ -8448,6 +8872,14 @@
     "rarete": "Promo",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/FNG020.webp",
     "extension": "Local Game Store Promos"
+  },
+  {
+    "id": "pleiades",
+    "nom": "Pleiades",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Pleiades",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/APS002.webp",
+    "extension": "Super Slam"
   },
   {
     "id": "pleiades-superstar",
@@ -8799,6 +9231,22 @@
     "rarete": "Majestic",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/AMX004-RF.webp",
     "extension": "Amory Deck - Maxx"
+  },
+  {
+    "id": "puffin",
+    "nom": "Puffin",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Puffin",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-SEA/EN/SEA002.png",
+    "extension": "High Seas"
+  },
+  {
+    "id": "puffin-hightail",
+    "nom": "Puffin, Hightail",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Puffin-Hightail",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2025-SEA/EN/SEA001.png",
+    "extension": "High Seas"
   },
   {
     "id": "pulping",
@@ -10450,6 +10898,14 @@
     "extension": "Local Game Store Promos"
   },
   {
+    "id": "sigil-of-astral-flow",
+    "nom": "Sigil of Astral Flow",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Sigil-of-Astral-Flow",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/AZS028.webp",
+    "extension": "Omens of the Third Age"
+  },
+  {
     "id": "sigil-of-brilliance",
     "nom": "Sigil of Brilliance",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Sigil-of-Brilliance",
@@ -10536,6 +10992,14 @@
     "rarete": "Promo",
     "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/FLR026.webp",
     "extension": "Local Game Store Promos"
+  },
+  {
+    "id": "sigil-of-silphidae",
+    "nom": "Sigil of Silphidae",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Sigil-of-Silphidae",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/PEN099.webp",
+    "extension": "Compendium of Rathe"
   },
   {
     "id": "sigil-of-solace",
@@ -10818,6 +11282,14 @@
     "extension": "Bright Lights"
   },
   {
+    "id": "smelting-of-the-old-ones",
+    "nom": "Smelting of the Old Ones",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Smelting-of-the-Old-Ones",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/MPG028.webp",
+    "extension": "Mastery Pack Guardian"
+  },
+  {
     "id": "smoke-out",
     "nom": "Smoke Out",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Smoke-Out",
@@ -11056,6 +11528,14 @@
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-DTD/EN/DTD235.png",
     "extension": "Promos"
+  },
+  {
+    "id": "spellbane-sigil",
+    "nom": "Spellbane Sigil",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Spellbane-Sigil",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/OMN201.webp",
+    "extension": "Omens of the Third Age"
   },
   {
     "id": "spellbound-creepers",
@@ -12166,6 +12646,14 @@
     "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/ANQ016.webp"
   },
   {
+    "id": "themai",
+    "nom": "Themai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Themai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR015_A_Back.png",
+    "extension": "Uprising"
+  },
+  {
     "id": "themis-archangel-of-judgment",
     "nom": "Themis, Archangel of Judgment",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Themis-Archangel-of-Judgment",
@@ -12634,6 +13122,14 @@
     "extension": "Local Game Store Promos"
   },
   {
+    "id": "tuffnut",
+    "nom": "Tuffnut",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Tuffnut",
+    "rarete": "Marvel",
+    "image": "https://d2wlb52bya4y8z.cloudfront.net/media/cards/large/SUP002.webp",
+    "extension": "Super Slam"
+  },
+  {
     "id": "tuffnut-bumbling-hulkster",
     "nom": "Tuffnut, Bumbling Hulkster",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Tuffnut-Bumbling-Hulkster",
@@ -12906,6 +13402,14 @@
     "extension": "LSS Promos"
   },
   {
+    "id": "verdance",
+    "nom": "Verdance",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Verdance",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2024-ROS/EN/ROS014.png",
+    "extension": "Rosetta"
+  },
+  {
     "id": "verdance-thorn-of-the-rose",
     "nom": "Verdance, Thorn of the Rose",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Verdance-Thorn-of-the-Rose",
@@ -12952,6 +13456,14 @@
     "rarete": "Majestic",
     "image": "https://storage.googleapis.com/fabmaster/media/images/EVR103.width-450.png",
     "extension": "Everfest"
+  },
+  {
+    "id": "victor-goldmane",
+    "nom": "Victor Goldmane",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Victor-Goldmane",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-HVY/EN/HVY048.png",
+    "extension": "Heavy Hitters"
   },
   {
     "id": "victor-goldmane-high-and-mighty",
@@ -13144,6 +13656,14 @@
     "rarete": "Majestic",
     "image": "https://storage.googleapis.com/fabmaster/cardfaces/2023-DTD/EN/DTD133.png",
     "extension": "Dusk till Dawn"
+  },
+  {
+    "id": "vynserakai",
+    "nom": "Vynserakai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Vynserakai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR016_A_Back.png",
+    "extension": "Uprising"
   },
   {
     "id": "wage-gold",
@@ -13490,6 +14010,14 @@
     "extension": "GEM Pack Promos"
   },
   {
+    "id": "yendurai",
+    "nom": "Yendurai",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Yendurai",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2022-UPR/UPR017_A_Back.png",
+    "extension": "Uprising"
+  },
+  {
     "id": "yo-ho-ho",
     "nom": "Yo Ho Ho!",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Yo-Ho-Ho",
@@ -13530,6 +14058,14 @@
     "extension": "Judge Unique Promos"
   },
   {
+    "id": "zen",
+    "nom": "Zen",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Zen",
+    "rarete": "Marvel",
+    "image": "https://storage.googleapis.com/fabmaster/cardfaces/2024-MST/EN/MST047.png",
+    "extension": "Part the Mistveil"
+  },
+  {
     "id": "zen-state",
     "nom": "Zen State",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Zen-State",
@@ -13546,6 +14082,14 @@
     "extension": "Hero Card Promos"
   },
   {
+    "id": "zenith-blade",
+    "nom": "Zenith Blade",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Zenith-Blade",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/AHA002-RF.webp",
+    "extension": "Mastery Pack Warrior"
+  },
+  {
     "id": "zero-to-sixty",
     "nom": "Zero to Sixty",
     "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Zero-to-Sixty",
@@ -13560,6 +14104,14 @@
     "rarete": "Promo",
     "image": "https://storage.googleapis.com/fabmaster/media/images/1HP216.width-450.png",
     "extension": "Tournament Pack"
+  },
+  {
+    "id": "zyggy",
+    "nom": "Zyggy",
+    "url": "https://www.cardmarket.com/en/FleshAndBlood/Cards/Zyggy",
+    "rarete": "Marvel",
+    "image": "https://legendstory-production-s3-public.s3.amazonaws.com/media/cards/large/OMN002.webp",
+    "extension": "Omens of the Third Age"
   },
   {
     "id": "zyggy-starlight",

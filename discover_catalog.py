@@ -10,8 +10,8 @@ CATALOG_FILE = BASE_DIR / "catalog.json"
 
 API_BASE = "https://api.goagain.dev/v1/cards"
 SETS_API = "https://api.goagain.dev/v1/sets?limit=200"
-TARGET_RARITIES = {"M", "L", "F", "P"}
-RARITY_NAMES = {"M": "Majestic", "L": "Legendary", "F": "Fabled", "P": "Promo"}
+TARGET_RARITIES = {"M", "L", "F", "P", "V"}
+RARITY_NAMES = {"M": "Majestic", "L": "Legendary", "F": "Fabled", "P": "Promo", "V": "Marvel"}
 ALL_RARITY_NAMES = {
     "C": "Common", "R": "Rare", "S": "Super Rare", "M": "Majestic",
     "L": "Legendary", "F": "Fabled", "T": "Token", "B": "Basic",
