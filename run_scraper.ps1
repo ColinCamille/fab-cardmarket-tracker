@@ -1,14 +1,44 @@
-$ErrorActionPreference = "Stop"
 $repoDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $repoDir
 
-python scraper.py
+$logFile = Join-Path $repoDir "run_scraper.log"
+"" | Out-File -FilePath $logFile -Append
+"===== Run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') =====" | Out-File -FilePath $logFile -Append
 
-git add prices.json
-$changes = git diff --cached --quiet; $hasChanges = $LASTEXITCODE -ne 0
+$env:LOCALAPPDATA = "C:\Users\Camille\AppData\Local"
+$env:APPDATA = "C:\Users\Camille\AppData\Roaming"
+$env:USERPROFILE = "C:\Users\Camille"
+
+"whoami: $(whoami)" | Out-File -FilePath $logFile -Append
+"env:LOCALAPPDATA = $env:LOCALAPPDATA" | Out-File -FilePath $logFile -Append
+$probePath = "C:\Users\Camille\AppData\Local\ms-playwright\chromium_headless_shell-1228\chrome-headless-shell-win64\chrome-headless-shell.exe"
+"Test-Path probe: $(Test-Path $probePath)" | Out-File -FilePath $logFile -Append
+$msPlaywrightList = Get-ChildItem 'C:\Users\Camille\AppData\Local\ms-playwright' -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name
+"Get-ChildItem ms-playwright: $($msPlaywrightList -join ', ')" | Out-File -FilePath $logFile -Append
+
+$python = "C:\Users\Camille\AppData\Local\Programs\Python\Python312\python.exe"
+
+if (-not (Test-Path $probePath)) {
+    "Navigateur Playwright introuvable dans ce contexte, installation..." | Out-File -FilePath $logFile -Append
+    & $python -m playwright install chromium *>> $logFile
+}
+
+& $python scraper.py *>> $logFile
+$scraperExit = $LASTEXITCODE
+"Code de sortie du scraper: $scraperExit" | Out-File -FilePath $logFile -Append
+
+if ($scraperExit -ne 0) {
+    "Le scraper a echoue, on ne commit pas." | Out-File -FilePath $logFile -Append
+    exit 1
+}
+
+git add prices.json *>> $logFile
+git diff --cached --quiet
+$hasChanges = $LASTEXITCODE -ne 0
 if ($hasChanges) {
-    git commit -m "Mise a jour des prix ($(Get-Date -Format 'yyyy-MM-dd HH:mm'))"
-    git push
+    git commit -m "Mise a jour des prix ($(Get-Date -Format 'yyyy-MM-dd HH:mm'))" *>> $logFile
+    git push *>> $logFile
+    "Commit et push effectues." | Out-File -FilePath $logFile -Append
 } else {
-    Write-Host "Aucun changement a pousser."
+    "Aucun changement a pousser." | Out-File -FilePath $logFile -Append
 }
