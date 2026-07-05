@@ -31,6 +31,13 @@ def slugify_url_name(name):
     return re.sub(r"[^A-Za-z0-9]+", "-", name).strip("-")
 
 
+def first_image(card):
+    for printing in card.get("printings", []):
+        if printing.get("image_url"):
+            return printing["image_url"]
+    return None
+
+
 def fetch_all_cards():
     cards = []
     offset = 0
@@ -51,7 +58,22 @@ def main():
     all_cards = fetch_all_cards()
     print(f"{len(all_cards)} cartes recuperees.")
 
-    existing_cards_ids = {c["id"] for c in load_json(CARDS_FILE, [])}
+    by_id = {slugify_id(c["name"]): c for c in all_cards}
+
+    cards = load_json(CARDS_FILE, [])
+    cards_updated = 0
+    for card in cards:
+        source = by_id.get(card["id"])
+        if source and not card.get("image"):
+            image = first_image(source)
+            if image:
+                card["image"] = image
+                cards_updated += 1
+    if cards_updated:
+        with open(CARDS_FILE, "w", encoding="utf-8") as f:
+            json.dump(cards, f, ensure_ascii=False, indent=2)
+    existing_cards_ids = {c["id"] for c in cards}
+
     catalog = load_json(CATALOG_FILE, [])
     catalog_by_id = {c["id"]: c for c in catalog}
 
@@ -68,17 +90,23 @@ def main():
 
         rarity_label = RARITY_NAMES[sorted(hit)[0]]
         url = f"https://www.cardmarket.com/en/FleshAndBlood/Cards/{slugify_url_name(card['name'])}"
+        image = first_image(card)
 
         if card_id in catalog_by_id:
             catalog_by_id[card_id]["rarete"] = rarity_label
             catalog_by_id[card_id]["url"] = url
+            if image:
+                catalog_by_id[card_id]["image"] = image
         else:
-            catalog_by_id[card_id] = {
+            entry = {
                 "id": card_id,
                 "nom": card["name"],
                 "url": url,
                 "rarete": rarity_label,
             }
+            if image:
+                entry["image"] = image
+            catalog_by_id[card_id] = entry
             added += 1
 
     catalog = sorted(catalog_by_id.values(), key=lambda c: c["nom"])
@@ -86,6 +114,7 @@ def main():
         json.dump(catalog, f, ensure_ascii=False, indent=2)
 
     print(f"Catalogue mis a jour : {len(catalog)} cartes au total ({added} nouvelles).")
+    print(f"cards.json : {cards_updated} images ajoutees.")
 
 
 if __name__ == "__main__":

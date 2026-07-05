@@ -43,7 +43,7 @@ def parse_int(text):
 
 def extract_price_info(html):
     soup = BeautifulSoup(html, "html.parser")
-    info = {"prix_min": None, "nb_vendeurs": None}
+    info = {"prix_min": None, "prix_moyen": None, "nb_vendeurs": None}
     for dt in soup.find_all("dt"):
         label = dt.get_text(strip=True)
         dd = dt.find_next_sibling("dd")
@@ -51,6 +51,8 @@ def extract_price_info(html):
             continue
         if label == "Available from":
             info["prix_min"] = parse_price(dd.get_text())
+        elif label == "Price Trend":
+            info["prix_moyen"] = parse_price(dd.get_text())
         elif label == "No. of Available Items":
             info["nb_vendeurs"] = parse_int(dd.get_text())
     return info
@@ -88,7 +90,8 @@ def record_price(prices, card, info):
     entry = {
         "date": datetime.now(timezone.utc).isoformat(),
         "prix_min": info["prix_min"],
+        "prix_moyen": info.get("prix_moyen"),
         "nb_vendeurs": info["nb_vendeurs"],
     }
     prices.setdefault(card["id"], []).append(entry)
-    print(f"  -> {entry['prix_min']} € ({entry['nb_vendeurs']} vendeurs)")
+    print(f"  -> {entry['prix_min']} € (tendance {entry['prix_moyen']}) ({entry['nb_vendeurs']} vendeurs)")

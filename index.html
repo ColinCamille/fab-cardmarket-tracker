@@ -84,8 +84,11 @@
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 14px;
-    padding: 16px;
-    margin-bottom: 14px;
+    padding: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
   }
   .card.hit {
     border-color: var(--green);
@@ -94,6 +97,18 @@
   .card.owned {
     opacity: 0.55;
   }
+  .thumb {
+    width: 46px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .card-main {
+    flex: 1;
+    min-width: 0;
+  }
   .card-header {
     display: flex;
     justify-content: space-between;
@@ -101,20 +116,24 @@
     gap: 8px;
   }
   .card-name {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 600;
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .badges {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 4px;
+    flex-shrink: 0;
   }
   .badge {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    padding: 3px 8px;
+    padding: 2px 7px;
     border-radius: 20px;
     white-space: nowrap;
   }
@@ -133,64 +152,34 @@
   .price-row {
     display: flex;
     align-items: baseline;
-    gap: 14px;
-    margin-top: 10px;
+    gap: 10px;
+    margin-top: 4px;
     flex-wrap: wrap;
   }
   .price-current {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     font-weight: 700;
   }
   .price-current.hit { color: var(--green); }
   .price-target {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: var(--text-dim);
   }
   .meta {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-dim);
-    margin-top: 4px;
+    margin-top: 2px;
   }
-  .chart-wrap {
-    margin-top: 12px;
-    height: 120px;
-  }
-  .card-footer {
-    margin-top: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .cm-link {
+  .no-data {
+    color: var(--text-dim);
     font-size: 0.8rem;
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .cm-link:active { opacity: 0.7; }
-  .own-btn {
-    font-size: 0.75rem;
-    border-radius: 20px;
-    padding: 6px 12px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-dim);
-  }
-  .own-btn.owned {
-    background: var(--owned);
-    border-color: var(--owned);
-    color: #0f1115;
-    font-weight: 600;
+    font-style: italic;
   }
   .empty {
     color: var(--text-dim);
     text-align: center;
     padding: 40px 20px;
     font-size: 0.9rem;
-  }
-  .no-data {
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    font-style: italic;
   }
   .load-more {
     display: block;
@@ -202,6 +191,128 @@
     color: var(--accent);
     font-size: 0.9rem;
     margin-top: 8px;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.open {
+    display: flex;
+  }
+  .modal {
+    background: var(--card-bg);
+    border-radius: 18px 18px 0 0;
+    padding: 20px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+  .modal-close {
+    display: block;
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.3rem;
+    padding: 4px 8px;
+  }
+  .modal-top {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .modal-image {
+    width: 120px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .modal-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .modal-chart-wrap {
+    height: 200px;
+    margin-top: 16px;
+  }
+  .modal-section {
+    margin-top: 18px;
+  }
+  .modal-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .alert-row {
+    display: flex;
+    gap: 8px;
+  }
+  .alert-input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .alert-save-btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    background: var(--accent);
+    color: #0f1115;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .modal-footer {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .cm-link {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .own-btn {
+    font-size: 0.8rem;
+    border-radius: 20px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+  }
+  .own-btn.owned {
+    background: var(--owned);
+    border-color: var(--owned);
+    color: #0f1115;
+    font-weight: 600;
+  }
+  .legend-row {
+    display: flex;
+    gap: 14px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+  }
+  .legend-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
   }
 </style>
 </head>
@@ -226,6 +337,10 @@
   <div id="cards"></div>
   <button class="load-more" id="loadMoreBtn" style="display:none;">Charger plus de cartes</button>
 
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent"></div>
+  </div>
+
 <script>
 const REPO = 'ColinCamille/fab-cardmarket-tracker';
 const BRANCH = 'master';
@@ -234,6 +349,7 @@ const PAGE_SIZE = 60;
 let allCards = [];
 let prices = {};
 let ownedSet = new Set();
+let alerts = {};
 let filter = 'not_owned';
 let searchText = '';
 let renderedCount = PAGE_SIZE;
@@ -244,7 +360,7 @@ function setToken(t) { localStorage.setItem('gh_token', t); }
 function promptForToken() {
   const current = getToken();
   const value = window.prompt(
-    "Token GitHub (scope 'repo') pour pouvoir marquer des cartes comme possédées.\n" +
+    "Token GitHub (scope 'repo') pour pouvoir marquer des cartes ou régler des alertes.\n" +
     "Crée-le sur github.com/settings/tokens/new si besoin.\n" +
     "Laisse vide pour ne rien changer.",
     current
@@ -302,23 +418,54 @@ async function toggleOwned(cardId) {
       (willOwn ? 'Ajout' : 'Retrait') + ' collection: ' + cardId);
     ownedSet = set;
     renderAll();
+    openModal(cardId); // refresh modal state (button label)
   } catch (e) {
     alert("Erreur lors de la mise à jour de la collection :\n" + e.message);
   }
 }
 
+async function saveAlert(cardId, value) {
+  if (!getToken()) {
+    promptForToken();
+    if (!getToken()) return;
+  }
+  const price = value.trim() === '' ? null : parseFloat(value.replace(',', '.'));
+  if (value.trim() !== '' && (isNaN(price) || price < 0)) {
+    alert('Prix invalide.');
+    return;
+  }
+  try {
+    const file = await githubGetFile('alertes.json');
+    const current = JSON.parse(b64DecodeUnicode(file.content));
+    if (price === null) {
+      delete current[cardId];
+    } else {
+      current[cardId] = price;
+    }
+    await githubPutFile('alertes.json', current, file.sha,
+      'Alerte prix: ' + cardId + ' -> ' + (price === null ? 'suppression' : price));
+    alerts = current;
+    renderAll();
+    openModal(cardId);
+  } catch (e) {
+    alert("Erreur lors de l'enregistrement de l'alerte :\n" + e.message);
+  }
+}
+
 async function loadData() {
-  const [cardsRes, catalogRes, pricesRes, collectionRes] = await Promise.all([
+  const [cardsRes, catalogRes, pricesRes, collectionRes, alertsRes] = await Promise.all([
     fetch('cards.json?_=' + Date.now()),
     fetch('catalog.json?_=' + Date.now()).catch(() => null),
     fetch('prices.json?_=' + Date.now()),
     fetch('collection.json?_=' + Date.now()).catch(() => null),
+    fetch('alertes.json?_=' + Date.now()).catch(() => null),
   ]);
   const cards = await cardsRes.json();
   const catalog = (catalogRes && catalogRes.ok) ? await catalogRes.json() : [];
   prices = await pricesRes.json();
   const collection = (collectionRes && collectionRes.ok) ? await collectionRes.json() : { possedees: [] };
   ownedSet = new Set(collection.possedees || []);
+  alerts = (alertsRes && alertsRes.ok) ? await alertsRes.json() : {};
 
   allCards = cards.map(c => ({ ...c, source: 'manuel' }))
     .concat(catalog.map(c => ({ ...c, source: 'catalogue' })));
@@ -345,6 +492,9 @@ function setupControls() {
     renderedCount += PAGE_SIZE;
     renderAll();
   });
+  document.getElementById('modalOverlay').addEventListener('click', (e) => {
+    if (e.target.id === 'modalOverlay') closeModal();
+  });
   updateFilterButtons();
 }
 
@@ -358,6 +508,11 @@ function formatDate(iso) {
   const d = new Date(iso);
   return d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
     ' ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+}
+
+function getAlertPrice(card) {
+  const v = alerts[card.id];
+  return (v != null) ? v : (card.prix_cible != null ? card.prix_cible : null);
 }
 
 function getFilteredCards() {
@@ -395,60 +550,118 @@ function renderAll() {
   const toShow = filtered.slice(0, renderedCount);
   container.innerHTML = '';
 
-  toShow.forEach((card, index) => {
+  toShow.forEach((card) => {
     const history = (prices[card.id] || []).slice().sort((a, b) => new Date(a.date) - new Date(b.date));
     const latest = history.length ? history[history.length - 1] : null;
-    const hasTarget = card.prix_cible != null;
-    const hit = latest && hasTarget && latest.prix_min <= card.prix_cible;
+    const target = getAlertPrice(card);
+    const hit = latest && target != null && latest.prix_min <= target;
     const owned = ownedSet.has(card.id);
 
     const el = document.createElement('div');
     el.className = 'card' + (hit ? ' hit' : '') + (owned ? ' owned' : '');
-
-    const chartId = 'chart-' + index;
+    el.dataset.id = card.id;
 
     el.innerHTML = `
-      <div class="card-header">
-        <p class="card-name">${card.nom}</p>
-        <div class="badges">
-          ${card.rarete ? `<span class="badge rarity">${card.rarete}</span>` : ''}
-          ${latest && hasTarget ? `<span class="badge ${hit ? 'hit' : 'miss'}">${hit ? 'Prix cible atteint' : 'Au-dessus de la cible'}</span>` : ''}
+      ${card.image ? `<img class="thumb" src="${card.image}" loading="lazy" alt="">` : '<div class="thumb"></div>'}
+      <div class="card-main">
+        <div class="card-header">
+          <p class="card-name">${card.nom}</p>
+          <div class="badges">
+            ${card.rarete ? `<span class="badge rarity">${card.rarete}</span>` : ''}
+            ${latest && target != null ? `<span class="badge ${hit ? 'hit' : 'miss'}">${hit ? 'Alerte atteinte' : 'Au-dessus'}</span>` : ''}
+          </div>
         </div>
-      </div>
-      ${latest ? `
-        <div class="price-row">
-          <span class="price-current ${hit ? 'hit' : ''}">${latest.prix_min.toFixed(2)} €</span>
-          ${hasTarget ? `<span class="price-target">cible : ${card.prix_cible.toFixed(2)} €</span>` : ''}
-        </div>
-        <div class="meta">${latest.nb_vendeurs != null ? latest.nb_vendeurs + ' vendeurs · ' : ''}maj ${formatDate(latest.date)}</div>
-        ${history.length > 1 ? `<div class="chart-wrap"><canvas id="${chartId}"></canvas></div>` : ''}
-      ` : `
-        <div class="no-data">Pas encore de données pour cette carte.</div>
-        ${hasTarget ? `<div class="price-target">cible : ${card.prix_cible.toFixed(2)} €</div>` : ''}
-      `}
-      <div class="card-footer">
-        <a class="cm-link" href="${card.url}" target="_blank" rel="noopener">Voir sur Cardmarket &rarr;</a>
-        <button class="own-btn ${owned ? 'owned' : ''}" data-id="${card.id}">${owned ? '✓ Possédée' : 'Marquer possédée'}</button>
+        ${latest ? `
+          <div class="price-row">
+            <span class="price-current ${hit ? 'hit' : ''}">${latest.prix_min.toFixed(2)} €</span>
+            ${target != null ? `<span class="price-target">alerte : ${target.toFixed(2)} €</span>` : ''}
+          </div>
+          <div class="meta">maj ${formatDate(latest.date)}</div>
+        ` : `
+          <div class="no-data">Pas encore de données.</div>
+        `}
       </div>
     `;
     container.appendChild(el);
-
-    el.querySelector('.own-btn').addEventListener('click', () => toggleOwned(card.id));
-
-    if (history.length > 1) {
-      requestAnimationFrame(() => drawChart(chartId, history, hasTarget ? card.prix_cible : null));
-    }
+    el.addEventListener('click', () => openModal(card.id));
   });
 
   loadMoreBtn.style.display = filtered.length > renderedCount ? 'block' : 'none';
 }
 
-function drawChart(canvasId, history, target) {
-  const ctx = document.getElementById(canvasId);
+function openModal(cardId) {
+  const card = allCards.find(c => c.id === cardId);
+  if (!card) return;
+
+  const history = (prices[card.id] || []).slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+  const latest = history.length ? history[history.length - 1] : null;
+  const target = getAlertPrice(card);
+  const hit = latest && target != null && latest.prix_min <= target;
+  const owned = ownedSet.has(card.id);
+
+  const modal = document.getElementById('modalContent');
+  modal.innerHTML = `
+    <button class="modal-close" id="modalCloseBtn">&times;</button>
+    <div class="modal-top">
+      ${card.image ? `<img class="modal-image" src="${card.image}" alt="">` : ''}
+      <div>
+        <p class="modal-name">${card.nom}</p>
+        ${card.rarete ? `<span class="badge rarity">${card.rarete}</span>` : ''}
+        ${latest ? `
+          <div class="price-row">
+            <span class="price-current ${hit ? 'hit' : ''}">${latest.prix_min.toFixed(2)} €</span>
+          </div>
+          <div class="meta">${latest.nb_vendeurs != null ? latest.nb_vendeurs + ' vendeurs · ' : ''}maj ${formatDate(latest.date)}</div>
+        ` : '<div class="no-data">Pas encore de données.</div>'}
+      </div>
+    </div>
+
+    ${history.length > 1 ? `
+      <div class="modal-chart-wrap"><canvas id="modalChart"></canvas></div>
+      <div class="legend-row">
+        <span><span class="legend-dot" style="background:#5b8cff;"></span>Prix min</span>
+        <span><span class="legend-dot" style="background:#f5a623;"></span>Prix moyen (tendance)</span>
+        ${target != null ? `<span><span class="legend-dot" style="background:#2ecc71;"></span>Alerte</span>` : ''}
+      </div>
+    ` : ''}
+
+    <div class="modal-section">
+      <label class="modal-label">Alerte de prix (te prévient visuellement quand le prix min descend à ce niveau ou en dessous)</label>
+      <div class="alert-row">
+        <input class="alert-input" id="alertInput" type="number" step="0.01" min="0" placeholder="ex: 5.00" value="${target != null ? target : ''}">
+        <button class="alert-save-btn" id="alertSaveBtn">Enregistrer</button>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <a class="cm-link" href="${card.url}" target="_blank" rel="noopener">Voir sur Cardmarket &rarr;</a>
+      <button class="own-btn ${owned ? 'owned' : ''}" id="modalOwnBtn">${owned ? '✓ Possédée' : 'Marquer possédée'}</button>
+    </div>
+  `;
+
+  document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+  document.getElementById('modalOwnBtn').addEventListener('click', () => toggleOwned(card.id));
+  document.getElementById('alertSaveBtn').addEventListener('click', () => {
+    saveAlert(card.id, document.getElementById('alertInput').value);
+  });
+
+  document.getElementById('modalOverlay').classList.add('open');
+
+  if (history.length > 1) {
+    requestAnimationFrame(() => drawModalChart(history, target));
+  }
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function drawModalChart(history, target) {
+  const ctx = document.getElementById('modalChart');
   if (!ctx) return;
   const datasets = [
     {
-      label: 'Prix',
+      label: 'Prix min',
       data: history.map(h => h.prix_min),
       borderColor: '#5b8cff',
       backgroundColor: 'rgba(91, 140, 255, 0.1)',
@@ -457,9 +670,19 @@ function drawChart(canvasId, history, target) {
       pointRadius: 2,
     }
   ];
+  if (history.some(h => h.prix_moyen != null)) {
+    datasets.push({
+      label: 'Prix moyen',
+      data: history.map(h => h.prix_moyen),
+      borderColor: '#f5a623',
+      fill: false,
+      tension: 0.25,
+      pointRadius: 2,
+    });
+  }
   if (target != null) {
     datasets.push({
-      label: 'Cible',
+      label: 'Alerte',
       data: history.map(() => target),
       borderColor: '#2ecc71',
       borderDash: [4, 4],
