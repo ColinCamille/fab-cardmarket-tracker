@@ -1,4 +1,5 @@
 import json
+import os
 import random
 import re
 import time
@@ -73,6 +74,20 @@ def fetch_card(page, card):
     return info
 
 
+def get_proxy_config():
+    server = os.environ.get("PROXY_SERVER")
+    if not server:
+        return None
+    config = {"server": server}
+    username = os.environ.get("PROXY_USERNAME")
+    password = os.environ.get("PROXY_PASSWORD")
+    if username:
+        config["username"] = username
+    if password:
+        config["password"] = password
+    return config
+
+
 def main():
     cards = load_json(CARDS_FILE, [])
     prices = load_json(PRICES_FILE, {})
@@ -81,8 +96,14 @@ def main():
         print("Aucune carte dans cards.json, rien à faire.")
         return
 
+    proxy = get_proxy_config()
+    print(f"Proxy {'activé' if proxy else 'désactivé'}.")
+
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        launch_args = {"headless": True}
+        if proxy:
+            launch_args["proxy"] = proxy
+        browser = p.chromium.launch(**launch_args)
         context = browser.new_context(
             user_agent=USER_AGENT,
             locale="en-US",
