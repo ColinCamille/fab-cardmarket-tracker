@@ -5,5 +5,12 @@
       "prix_min": 3.3,
       "nb_vendeurs": 87
     }
+  ],
+  "absorption-dome": [
+    {
+      "date": "2026-07-05T16:28:23.204118+00:00",
+      "prix_min": 0.25,
+      "nb_vendeurs": 357
+    }
   ]
 }
