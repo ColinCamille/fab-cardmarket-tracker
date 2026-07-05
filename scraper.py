@@ -8,6 +8,7 @@ from cardmarket_common import (
     USER_AGENT,
     already_ran_today,
     fetch_card,
+    fetch_versions,
     load_json,
     record_price,
     record_version_price,
@@ -32,6 +33,8 @@ def main():
         print("Déjà scrapé aujourd'hui, on ne fait rien.")
         return
 
+    cards_changed = False
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -52,24 +55,33 @@ def main():
             if info is not None:
                 record_price(prices, card, info)
 
-            time.sleep(random.uniform(4, 8))
+            # Pause plus longue avant la 2e requete (page Versions) pour eviter
+            # que deux acces rapproches ne declenchent le challenge Cloudflare.
+            time.sleep(random.uniform(12, 20))
 
-            for version in card.get("versions", []):
-                pseudo_card = {"nom": f"{card['nom']} ({version['nom']})", "url": version["url"]}
-                print(f"  version: {version['nom']}...")
-                try:
-                    v_info = fetch_card(page, pseudo_card)
-                except Exception as exc:
-                    print(f"  [ERREUR] Exception pour {pseudo_card['nom']}: {exc}")
-                    v_info = None
-                if v_info is not None:
-                    record_version_price(prices_versions, card["id"], version["nom"], v_info)
+            # Prix par version, tout est sur la page /Versions (une seule requête)
+            try:
+                versions = fetch_versions(page, card)
+            except Exception as exc:
+                print(f"  [ERREUR] Exception versions pour {card['nom']}: {exc}")
+                versions = None
+
+            if versions:
+                card["versions"] = [{"nom": v["nom"], "url": v["url"]} for v in versions]
+                cards_changed = True
+                for v in versions:
+                    if v["prix_min"] is not None:
+                        record_version_price(prices_versions, card["id"], v["nom"], v)
+
+            if i < len(cards) - 1:
                 time.sleep(random.uniform(4, 8))
 
         browser.close()
 
     save_json(PRICES_FILE, prices)
     save_json(PRICES_VERSIONS_FILE, prices_versions)
+    if cards_changed:
+        save_json(CARDS_FILE, cards)
     print("Terminé.")
 
 

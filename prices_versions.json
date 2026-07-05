@@ -1,1 +1,20 @@
-{}
+{
+  "hyper-scrapper": {
+    "Regular": [
+      {
+        "date": "2026-07-05T21:43:32.583119+00:00",
+        "prix_min": 3.3,
+        "prix_moyen": null,
+        "nb_vendeurs": 68
+      }
+    ],
+    "Rainbow Foil": [
+      {
+        "date": "2026-07-05T21:43:32.583119+00:00",
+        "prix_min": 6.89,
+        "prix_moyen": null,
+        "nb_vendeurs": 19
+      }
+    ]
+  }
+}

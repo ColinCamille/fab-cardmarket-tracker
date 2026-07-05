@@ -62,6 +62,62 @@ def is_blocked(title):
     return "Just a moment" in title or "Attention Required" in title
 
 
+def extract_versions(html):
+    """Extrait les versions et leur prix depuis la page /Versions d'une carte.
+
+    Chaque tuile de version contient une image dont l'attribut alt se termine par
+    "(Nom de la version)" et un prix "From X €". Tout est sur cette page unique,
+    qui reste accessible (contrairement aux pages produit /Products/Singles/...).
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    versions = []
+    seen_urls = set()
+    for a in soup.select("a[href*='/Products/Singles/']"):
+        img = a.find("img")
+        alt = img.get("alt") if img else None
+        if not alt:
+            continue
+        match = re.search(r"\(([^)]+)\)\s*$", alt)
+        nom = match.group(1).strip() if match else None
+        if not nom:
+            continue
+
+        href = a.get("href")
+        url = href if href.startswith("http") else "https://www.cardmarket.com" + href
+        if url in seen_urls:
+            continue
+        seen_urls.add(url)
+
+        prix_min = None
+        nb_vendeurs = None
+        for para in a.find_all("p"):
+            text = para.get_text()
+            if "From" in text and prix_min is None:
+                prix_min = parse_price(text)
+            if "Available" in text and nb_vendeurs is None:
+                nb_vendeurs = parse_int(text)
+
+        versions.append({
+            "nom": nom,
+            "url": url,
+            "prix_min": prix_min,
+            "prix_moyen": None,
+            "nb_vendeurs": nb_vendeurs,
+        })
+    return versions
+
+
+def fetch_versions(page, card):
+    versions_url = card["url"].rstrip("/") + "/Versions"
+    page.goto(versions_url, wait_until="domcontentloaded", timeout=45000)
+    page.wait_for_timeout(6000)
+    title = page.title()
+    if is_blocked(title):
+        print(f"  [BLOQUE] Cloudflare a bloqué la page Versions de {card['nom']}")
+        return None
+    return extract_versions(page.content())
+
+
 def fetch_card(page, card):
     page.goto(card["url"], wait_until="domcontentloaded", timeout=45000)
     page.wait_for_timeout(6000)
