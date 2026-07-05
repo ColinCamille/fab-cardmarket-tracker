@@ -67,6 +67,8 @@ def fetch_card(page, card):
     info = extract_price_info(html)
     if info["prix_min"] is None:
         print(f"  [ERREUR] Prix introuvable pour {card['nom']} (page chargée mais sélecteur non trouvé)")
+        print(f"  [DEBUG] title={title!r} html_len={len(html)}")
+        print(f"  [DEBUG] html_head={html[:1000]!r}")
         return None
     return info
 
