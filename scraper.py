@@ -1,5 +1,4 @@
 import json
-import os
 import random
 import re
 import time
@@ -57,35 +56,24 @@ def extract_price_info(html):
     return info
 
 
+def is_blocked(title):
+    return "Just a moment" in title or "Attention Required" in title
+
+
 def fetch_card(page, card):
-    page.goto(card["url"], wait_until="domcontentloaded", timeout=30000)
+    page.goto(card["url"], wait_until="domcontentloaded", timeout=45000)
     page.wait_for_timeout(6000)
     title = page.title()
     html = page.content()
-    if "Just a moment" in title:
+    if is_blocked(title):
         print(f"  [BLOQUE] Cloudflare a bloqué la requête pour {card['nom']}")
         return None
     info = extract_price_info(html)
     if info["prix_min"] is None:
         print(f"  [ERREUR] Prix introuvable pour {card['nom']} (page chargée mais sélecteur non trouvé)")
         print(f"  [DEBUG] title={title!r} html_len={len(html)}")
-        print(f"  [DEBUG] html_head={html[:1000]!r}")
         return None
     return info
-
-
-def get_proxy_config():
-    server = os.environ.get("PROXY_SERVER")
-    if not server:
-        return None
-    config = {"server": server}
-    username = os.environ.get("PROXY_USERNAME")
-    password = os.environ.get("PROXY_PASSWORD")
-    if username:
-        config["username"] = username
-    if password:
-        config["password"] = password
-    return config
 
 
 def main():
@@ -96,14 +84,8 @@ def main():
         print("Aucune carte dans cards.json, rien à faire.")
         return
 
-    proxy = get_proxy_config()
-    print(f"Proxy {'activé' if proxy else 'désactivé'}.")
-
     with sync_playwright() as p:
-        launch_args = {"headless": True}
-        if proxy:
-            launch_args["proxy"] = proxy
-        browser = p.chromium.launch(**launch_args)
+        browser = p.chromium.launch(headless=True)
         context = browser.new_context(
             user_agent=USER_AGENT,
             locale="en-US",
