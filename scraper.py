@@ -10,16 +10,19 @@ from cardmarket_common import (
     fetch_card,
     load_json,
     record_price,
+    record_version_price,
     save_json,
 )
 
 CARDS_FILE = BASE_DIR / "cards.json"
 PRICES_FILE = BASE_DIR / "prices.json"
+PRICES_VERSIONS_FILE = BASE_DIR / "prices_versions.json"
 
 
 def main():
     cards = load_json(CARDS_FILE, [])
     prices = load_json(PRICES_FILE, {})
+    prices_versions = load_json(PRICES_VERSIONS_FILE, {})
 
     if not cards:
         print("Aucune carte dans cards.json, rien à faire.")
@@ -49,12 +52,24 @@ def main():
             if info is not None:
                 record_price(prices, card, info)
 
-            if i < len(cards) - 1:
+            time.sleep(random.uniform(4, 8))
+
+            for version in card.get("versions", []):
+                pseudo_card = {"nom": f"{card['nom']} ({version['nom']})", "url": version["url"]}
+                print(f"  version: {version['nom']}...")
+                try:
+                    v_info = fetch_card(page, pseudo_card)
+                except Exception as exc:
+                    print(f"  [ERREUR] Exception pour {pseudo_card['nom']}: {exc}")
+                    v_info = None
+                if v_info is not None:
+                    record_version_price(prices_versions, card["id"], version["nom"], v_info)
                 time.sleep(random.uniform(4, 8))
 
         browser.close()
 
     save_json(PRICES_FILE, prices)
+    save_json(PRICES_VERSIONS_FILE, prices_versions)
     print("Terminé.")
 
 

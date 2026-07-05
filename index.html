@@ -298,6 +298,25 @@
     margin-bottom: 6px;
     display: block;
   }
+  .version-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .version-row:last-child {
+    border-bottom: none;
+  }
+  .version-name {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.88rem;
+  }
+  .version-price {
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
   .alert-row {
     display: flex;
     gap: 8px;
@@ -422,6 +441,7 @@ const PAGE_SIZE = 60;
 
 let allCards = [];
 let prices = {};
+let priceVersions = {};
 let ownedSet = new Set();
 let alerts = {};
 let filter = 'not_owned';
@@ -529,12 +549,13 @@ async function saveAlert(cardId, value) {
 }
 
 async function loadData() {
-  const [cardsRes, catalogRes, pricesRes, collectionRes, alertsRes] = await Promise.all([
+  const [cardsRes, catalogRes, pricesRes, collectionRes, alertsRes, priceVersionsRes] = await Promise.all([
     fetch('cards.json?_=' + Date.now()),
     fetch('catalog.json?_=' + Date.now()).catch(() => null),
     fetch('prices.json?_=' + Date.now()),
     fetch('collection.json?_=' + Date.now()).catch(() => null),
     fetch('alertes.json?_=' + Date.now()).catch(() => null),
+    fetch('prices_versions.json?_=' + Date.now()).catch(() => null),
   ]);
   const cards = await cardsRes.json();
   const catalog = (catalogRes && catalogRes.ok) ? await catalogRes.json() : [];
@@ -542,6 +563,7 @@ async function loadData() {
   const collection = (collectionRes && collectionRes.ok) ? await collectionRes.json() : { possedees: [] };
   ownedSet = new Set(collection.possedees || []);
   alerts = (alertsRes && alertsRes.ok) ? await alertsRes.json() : {};
+  priceVersions = (priceVersionsRes && priceVersionsRes.ok) ? await priceVersionsRes.json() : {};
 
   allCards = cards.map(c => ({ ...c, source: 'manuel' }))
     .concat(catalog.map(c => ({ ...c, source: 'catalogue' })));
@@ -772,6 +794,32 @@ function renderAll() {
   loadMoreBtn.style.display = filtered.length > renderedCount ? 'block' : 'none';
 }
 
+function renderVersionsSection(card) {
+  const versions = priceVersions[card.id];
+  if (!versions || !Object.keys(versions).length) return '';
+
+  const rows = Object.entries(versions).map(([nom, hist]) => {
+    const sorted = hist.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+    const last = sorted[sorted.length - 1];
+    if (!last) return '';
+    const versionInfo = (card.versions || []).find(v => v.nom === nom);
+    const url = versionInfo ? versionInfo.url : card.url;
+    return `
+      <div class="version-row">
+        <a href="${url}" target="_blank" rel="noopener" class="version-name">${nom}</a>
+        <span class="version-price">${last.prix_min.toFixed(2)} €</span>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="modal-section">
+      <label class="modal-label">Prix par version</label>
+      ${rows}
+    </div>
+  `;
+}
+
 function openModal(cardId) {
   const card = allCards.find(c => c.id === cardId);
   if (!card) return;
@@ -807,6 +855,8 @@ function openModal(cardId) {
         ${target != null ? `<span><span class="legend-dot" style="background:#2ecc71;"></span>Alerte</span>` : ''}
       </div>
     ` : ''}
+
+    ${renderVersionsSection(card)}
 
     <div class="modal-section">
       <label class="modal-label">Alerte de prix (te prévient visuellement quand le prix min descend à ce niveau ou en dessous)</label>

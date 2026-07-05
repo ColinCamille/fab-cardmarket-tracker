@@ -95,3 +95,14 @@ def record_price(prices, card, info):
     }
     prices.setdefault(card["id"], []).append(entry)
     print(f"  -> {entry['prix_min']} € (tendance {entry['prix_moyen']}) ({entry['nb_vendeurs']} vendeurs)")
+
+
+def record_version_price(prices_versions, card_id, version_nom, info):
+    entry = {
+        "date": datetime.now(timezone.utc).isoformat(),
+        "prix_min": info["prix_min"],
+        "prix_moyen": info.get("prix_moyen"),
+        "nb_vendeurs": info["nb_vendeurs"],
+    }
+    prices_versions.setdefault(card_id, {}).setdefault(version_nom, []).append(entry)
+    print(f"    [{version_nom}] -> {entry['prix_min']} € (tendance {entry['prix_moyen']})")
