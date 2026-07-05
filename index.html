@@ -506,11 +506,9 @@ async function saveAlert(cardId, value) {
   try {
     const file = await githubGetFile('alertes.json');
     const current = JSON.parse(b64DecodeUnicode(file.content));
-    if (price === null) {
-      delete current[cardId];
-    } else {
-      current[cardId] = price;
-    }
+    // On stocke explicitement `null` (plutôt que de supprimer la clé) pour pouvoir
+    // annuler un prix_cible défini "en dur" dans cards.json.
+    current[cardId] = price;
     await githubPutFile('alertes.json', current, file.sha,
       'Alerte prix: ' + cardId + ' -> ' + (price === null ? 'suppression' : price));
     alerts = current;
@@ -607,8 +605,12 @@ function formatDate(iso) {
 }
 
 function getAlertPrice(card) {
-  const v = alerts[card.id];
-  return (v != null) ? v : (card.prix_cible != null ? card.prix_cible : null);
+  // Une entrée explicite dans alertes.json (même null) prend le pas sur prix_cible,
+  // pour permettre d'annuler une alerte définie "en dur" dans cards.json.
+  if (Object.prototype.hasOwnProperty.call(alerts, card.id)) {
+    return alerts[card.id];
+  }
+  return card.prix_cible != null ? card.prix_cible : null;
 }
 
 function getHistory(card) {
@@ -621,7 +623,7 @@ function getLatest(card) {
 }
 
 function hasAlert(card) {
-  return alerts[card.id] != null || card.prix_cible != null;
+  return getAlertPrice(card) != null;
 }
 
 function isAlertHit(card) {
