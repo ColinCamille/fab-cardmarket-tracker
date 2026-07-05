@@ -25,14 +25,18 @@ if (-not (Test-Path $probePath)) {
 
 & $python scraper.py *>> $logFile
 $scraperExit = $LASTEXITCODE
-"Code de sortie du scraper: $scraperExit" | Out-File -FilePath $logFile -Append
+"Code de sortie du scraper (cards.json): $scraperExit" | Out-File -FilePath $logFile -Append
 
-if ($scraperExit -ne 0) {
-    "Le scraper a echoue, on ne commit pas." | Out-File -FilePath $logFile -Append
+& $python scrape_catalog.py *>> $logFile
+$catalogExit = $LASTEXITCODE
+"Code de sortie du scraper (catalog.json): $catalogExit" | Out-File -FilePath $logFile -Append
+
+if ($scraperExit -ne 0 -and $catalogExit -ne 0) {
+    "Les deux scrapers ont echoue, on ne commit pas." | Out-File -FilePath $logFile -Append
     exit 1
 }
 
-git add prices.json *>> $logFile
+git add prices.json catalog_state.json *>> $logFile
 git diff --cached --quiet
 $hasChanges = $LASTEXITCODE -ne 0
 if ($hasChanges) {
