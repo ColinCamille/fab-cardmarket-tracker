@@ -76,12 +76,24 @@ def fetch_card(page, card):
     return info
 
 
+def already_ran_today(prices):
+    today = datetime.now(timezone.utc).date()
+    for entries in prices.values():
+        if entries and datetime.fromisoformat(entries[-1]["date"]).date() == today:
+            return True
+    return False
+
+
 def main():
     cards = load_json(CARDS_FILE, [])
     prices = load_json(PRICES_FILE, {})
 
     if not cards:
         print("Aucune carte dans cards.json, rien à faire.")
+        return
+
+    if already_ran_today(prices):
+        print("Déjà scrapé aujourd'hui, on ne fait rien.")
         return
 
     with sync_playwright() as p:
