@@ -5,10 +5,9 @@ from playwright.sync_api import sync_playwright
 
 from cardmarket_common import (
     BASE_DIR,
-    USER_AGENT,
     already_ran_today,
-    fetch_card,
-    fetch_versions,
+    fetch_card_isolated,
+    fetch_versions_isolated,
     load_json,
     record_price,
     record_version_price,
@@ -36,18 +35,10 @@ def main():
     cards_changed = False
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context(
-            user_agent=USER_AGENT,
-            locale="en-US",
-            viewport={"width": 1280, "height": 800},
-        )
-        page = context.new_page()
-
         for i, card in enumerate(cards):
             print(f"[{i + 1}/{len(cards)}] {card['nom']}...")
             try:
-                info = fetch_card(page, card)
+                info = fetch_card_isolated(p, card)
             except Exception as exc:
                 print(f"  [ERREUR] Exception pour {card['nom']}: {exc}")
                 info = None
@@ -55,13 +46,11 @@ def main():
             if info is not None:
                 record_price(prices, card, info)
 
-            # Pause plus longue avant la 2e requete (page Versions) pour eviter
-            # que deux acces rapproches ne declenchent le challenge Cloudflare.
-            time.sleep(random.uniform(12, 20))
+            time.sleep(random.uniform(8, 12))
 
-            # Prix par version, tout est sur la page /Versions (une seule requête)
+            # Prix par version (page /Versions), dans un navigateur neuf lui aussi
             try:
-                versions = fetch_versions(page, card)
+                versions = fetch_versions_isolated(p, card)
             except Exception as exc:
                 print(f"  [ERREUR] Exception versions pour {card['nom']}: {exc}")
                 versions = None
@@ -74,9 +63,7 @@ def main():
                         record_version_price(prices_versions, card["id"], v["nom"], v)
 
             if i < len(cards) - 1:
-                time.sleep(random.uniform(4, 8))
-
-        browser.close()
+                time.sleep(random.uniform(8, 12))
 
     save_json(PRICES_FILE, prices)
     save_json(PRICES_VERSIONS_FILE, prices_versions)

@@ -134,6 +134,37 @@ def fetch_card(page, card):
     return info
 
 
+def _new_page(browser):
+    context = browser.new_context(
+        user_agent=USER_AGENT,
+        locale="en-US",
+        viewport={"width": 1280, "height": 800},
+    )
+    return context.new_page()
+
+
+def fetch_card_isolated(p, card):
+    """Récupère le prix d'une carte dans un navigateur neuf (une session par carte).
+
+    Cardmarket ne tolère qu'environ une requête par session de navigateur ; relancer
+    le navigateur à chaque carte fait que chaque requête est une "première requête"
+    et contourne ainsi le challenge Cloudflare.
+    """
+    browser = p.chromium.launch(headless=True)
+    try:
+        return fetch_card(_new_page(browser), card)
+    finally:
+        browser.close()
+
+
+def fetch_versions_isolated(p, card):
+    browser = p.chromium.launch(headless=True)
+    try:
+        return fetch_versions(_new_page(browser), card)
+    finally:
+        browser.close()
+
+
 def already_ran_today(prices):
     today = datetime.now(timezone.utc).date()
     for entries in prices.values():

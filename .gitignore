@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .claude/
 run_scraper.log
+init_scrape.log
