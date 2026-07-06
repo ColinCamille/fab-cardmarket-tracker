@@ -12,5 +12,29 @@
       "prix_min": 0.25,
       "nb_vendeurs": 357
     }
+  ],
+  "a-bit-off-the-side": [
+    {
+      "date": "2026-07-06T04:25:55.299370+00:00",
+      "prix_min": 1.6,
+      "prix_moyen": 1.99,
+      "nb_vendeurs": 342
+    }
+  ],
+  "a-good-clean-fight": [
+    {
+      "date": "2026-07-06T04:26:29.231725+00:00",
+      "prix_min": 0.03,
+      "prix_moyen": 0.02,
+      "nb_vendeurs": 1118
+    }
+  ],
+  "achilles-accelerator": [
+    {
+      "date": "2026-07-06T04:26:45.289108+00:00",
+      "prix_min": 0.02,
+      "prix_moyen": 0.06,
+      "nb_vendeurs": 1636
+    }
   ]
 }
