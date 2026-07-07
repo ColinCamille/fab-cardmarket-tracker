@@ -17,6 +17,12 @@
       "date": "2026-07-05T16:28:23.204118+00:00",
       "prix_min": 0.25,
       "nb_vendeurs": 357
+    },
+    {
+      "date": "2026-07-07T07:01:18.608068+00:00",
+      "prix_min": 0.25,
+      "prix_moyen": 0.02,
+      "nb_vendeurs": 352
     }
   ],
   "a-bit-off-the-side": [
@@ -31,6 +37,12 @@
       "prix_min": 1.6,
       "prix_moyen": 2.42,
       "nb_vendeurs": 341
+    },
+    {
+      "date": "2026-07-07T07:00:27.787777+00:00",
+      "prix_min": 1.6,
+      "prix_moyen": 2.42,
+      "nb_vendeurs": 341
     }
   ],
   "a-good-clean-fight": [
@@ -42,6 +54,12 @@
     },
     {
       "date": "2026-07-07T06:05:35.846924+00:00",
+      "prix_min": 0.03,
+      "prix_moyen": 0.02,
+      "nb_vendeurs": 1122
+    },
+    {
+      "date": "2026-07-07T07:01:01.009331+00:00",
       "prix_min": 0.03,
       "prix_moyen": 0.02,
       "nb_vendeurs": 1122
