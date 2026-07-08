@@ -10,6 +10,12 @@
       "prix_min": 6.89,
       "prix_moyen": 6.89,
       "nb_vendeurs": 86
+    },
+    {
+      "date": "2026-07-08T14:22:36.489670+00:00",
+      "prix_min": 6.89,
+      "prix_moyen": 6.89,
+      "nb_vendeurs": 87
     }
   ],
   "absorption-dome": [
@@ -43,6 +49,12 @@
       "prix_min": 1.6,
       "prix_moyen": 2.42,
       "nb_vendeurs": 341
+    },
+    {
+      "date": "2026-07-08T14:23:17.806041+00:00",
+      "prix_min": 1.6,
+      "prix_moyen": 2.54,
+      "nb_vendeurs": 343
     }
   ],
   "a-good-clean-fight": [
