@@ -16,6 +16,12 @@
       "prix_min": 6.89,
       "prix_moyen": 6.89,
       "nb_vendeurs": 87
+    },
+    {
+      "date": "2026-07-12T06:34:52.690414+00:00",
+      "prix_min": 6.89,
+      "prix_moyen": 6.89,
+      "nb_vendeurs": 87
     }
   ],
   "absorption-dome": [
@@ -55,6 +61,12 @@
       "prix_min": 1.6,
       "prix_moyen": 2.54,
       "nb_vendeurs": 343
+    },
+    {
+      "date": "2026-07-12T06:35:37.854473+00:00",
+      "prix_min": 1.9,
+      "prix_moyen": 2.63,
+      "nb_vendeurs": 323
     }
   ],
   "a-good-clean-fight": [
@@ -75,6 +87,12 @@
       "prix_min": 0.03,
       "prix_moyen": 0.02,
       "nb_vendeurs": 1122
+    },
+    {
+      "date": "2026-07-12T06:36:11.928300+00:00",
+      "prix_min": 0.02,
+      "prix_moyen": 0.02,
+      "nb_vendeurs": 1148
     }
   ],
   "achilles-accelerator": [
